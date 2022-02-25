@@ -19,9 +19,12 @@ from django.urls import path, include
 from features.views import index
 import debug_toolbar
 
+from order.views import create_order
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index),
+    path('order/create_order/', create_order, name='create_order'),
     path('__debug__/', include(debug_toolbar.urls)),
 
 ]

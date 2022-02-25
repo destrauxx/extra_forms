@@ -1,0 +1,19 @@
+<h1>Our pizzas! Tasty and delicious</h1>
+<!-- <ul>
+    {% for i in pizza %}
+        <li>{{i.name}}</li>
+        <div>
+            <mark>Ingridiento</mark>
+        </div>
+        <ul>
+            {% for j in i.toppings.all %}
+                <li>{{ j.name }}</li>
+            {% endfor %}
+        </ul>
+    {% endfor %}
+</ul> -->
+<form action="" method="post" class="form">
+    {% csrf_token %}
+    {{ order_form.as_p }}
+    <input type="submit" class="order" value="place order">
+</form>
