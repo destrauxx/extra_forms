@@ -17,3 +17,23 @@
     {{ order_form.as_p }}
     <input type="submit" class="order" value="place order">
 </form>
+<button class="more">add more pizza</button>
+
+<script>
+    let pizza = document.querySelector('.pizzas')
+    let order = document.querySelector('.order')
+    let more = document.querySelector('.more')
+    let form = document.querySelector('.form')
+
+    more.addEventListener('click', (e) => {
+        e.preventDefault()
+        p = document.createElement('p')
+        l = document.createElement('label')
+        l.setAttribute('for', 'id_choice')
+        l.textContent = 'Choice:'
+        cloned = pizza.cloneNode(true)
+        p.append(l)
+        p.append(cloned)
+        form.insertBefore(p, order)
+    })
+</script>
