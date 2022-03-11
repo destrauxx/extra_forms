@@ -14,7 +14,19 @@
 </ul> -->
 <form action="" method="post" class="form">
     {% csrf_token %}
-    {{ order_form.as_p }}
+    {% for field in order_form %}
+        <div>
+            {{ field.label_tag }} {{ field }}
+        </div>
+        {% if field.help_text %}
+            <p class="help">{{field.help_text|safe}}</p>
+        {% endif %}
+        {% if field.errors %}
+            {% for error in field.errors %}
+                {{errors}}
+            {% endfor %}
+        {% endif %}
+    {% endfor %}
     <input type="submit" class="order" value="place order">
 </form>
 <button class="more">add more pizza</button>

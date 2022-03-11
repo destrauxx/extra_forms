@@ -6,14 +6,26 @@ PIZZAS = [
     (f'{p.id}', f'{p.name}') for p in PizzaModel.objects.all()
 ]
 
+
 class CreateForm(forms.Form):
     address = forms.CharField()
-    choice = forms.ChoiceField(choices=PIZZAS, widget=forms.Select(attrs={'class': 'pizzas'}))
+    choice = forms.ChoiceField(
+        choices=PIZZAS,
+        help_text='If you want some extra. Send us <a href="#">Message</a>',
+        widget=forms.CheckboxSelectMultiple(attrs={'class': 'pizzas'}))
+
 
 class CreateOrderModelForm(forms.ModelForm):
+    error_css_class = 'error-field-class'
+    required_css_class = 'required-field-class'
+
     class Meta:
         model = OrderModel
         fields = ['address', 'pizza_order']
         widgets = {
+            'address': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Enter your address:'
+            }),
             'pizza_order': forms.CheckboxSelectMultiple()
         }
