@@ -20,13 +20,14 @@ from features.views import index
 import debug_toolbar
 
 from order.views import create_order, create_model_order
+from pizza.views import pizza_detail_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index),
     path('order/create_order/', create_order, name='create_order'),
     path('createmodelorder', create_model_order, name='createmodelorder'),
+    path('<slug:slug>', pizza_detail_view, name='pizza_detail'),
     path('__debug__/', include(debug_toolbar.urls)),
-    
 
 ]

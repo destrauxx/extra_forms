@@ -2,13 +2,13 @@ from django.contrib import admin
 
 from django.contrib import messages
 from django.utils.translation import ngettext
-from .models import OrderModel, OrderProxy
+from .models import OrderModel
 
 # Register your models here.
 
 
 class OrderInline(admin.TabularInline):
-    model = OrderProxy
+    model = OrderModel.pizza_order.through
     verbose_name = 'order'
     verbose_name_plural = 'Create order'
     extra = 0

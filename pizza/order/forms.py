@@ -6,13 +6,17 @@ PIZZAS = [
     (f'{p.id}', f'{p.name}') for p in PizzaModel.objects.all()
 ]
 
+DEL_STATUS = [('PEN', 'Pending'), ('DEL', 'Delivered')]
 
 class CreateForm(forms.Form):
-    address = forms.CharField()
+    address = forms.CharField(required=True)
     choice = forms.ChoiceField(
         choices=PIZZAS,
         help_text='If you want some extra. Send us <a href="#">Message</a>',
         widget=forms.CheckboxSelectMultiple(attrs={'class': 'pizzas'}))
+    delivery_status = forms.ChoiceField(
+        choices=DEL_STATUS
+    )
 
 
 class CreateOrderModelForm(forms.ModelForm):

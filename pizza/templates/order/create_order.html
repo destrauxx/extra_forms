@@ -1,7 +1,9 @@
 <h1>Our pizzas! Tasty and delicious</h1>
-<!-- <ul>
+<ul>
     {% for i in pizza %}
-        <li>{{i.name}}</li>
+        <li>
+            <a href="{{ p.name_slug }}">{{p.name}}</a>
+        </li>
         <div>
             <mark>Ingridiento</mark>
         </div>
@@ -11,7 +13,7 @@
             {% endfor %}
         </ul>
     {% endfor %}
-</ul> -->
+</ul>
 <form action="" method="post" class="form">
     {% csrf_token %}
     {% for field in order_form %}
